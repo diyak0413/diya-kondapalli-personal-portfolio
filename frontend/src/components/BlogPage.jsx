@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Tag } from 'lucide-react';
 import { blogContent } from '../data/mock';
+// OPTIONAL VISUAL — SAFE TO REMOVE (import below)
+import { TiltCard } from './VisualExperiments';
 
 const BlogPage = () => {
   return (
@@ -23,10 +25,11 @@ const BlogPage = () => {
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {blogContent.posts.map((post, index) => (
-            <article
-              key={post.id}
-              className="group bg-white rounded-2xl border border-neutral-100 hover:border-neutral-200 hover:shadow-lg transition-all duration-500 overflow-hidden"
-            >
+            // OPTIONAL VISUAL — TiltCard adds 3D hover effect (safe to replace with <article>)
+            <TiltCard key={post.id} className="h-full">
+              <article
+                className="blog-card relative group bg-white rounded-2xl border border-neutral-100 hover:border-neutral-200 transition-all duration-500 overflow-hidden h-full"
+              >
               <div className="p-6 lg:p-8">
                 {/* Meta */}
                 <div className="flex items-center gap-4 mb-4">
