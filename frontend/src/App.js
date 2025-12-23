@@ -34,10 +34,7 @@ const Layout = ({ children }) => {
 
 function App() {
   return (
-    // OPTIONAL VISUAL — Add 'visuals-enabled' class when visuals are on
-    <div className={`App ${ENABLE_VISUALS ? 'visuals-enabled' : ''}`}>
-      {/* OPTIONAL VISUAL — SAFE TO REMOVE */}
-      <VisualExperiments section="global" />
+    <div className="App">
       <BrowserRouter>
         <Layout>
           <Routes>
