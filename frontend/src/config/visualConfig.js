@@ -11,7 +11,7 @@
 // ============================================
 
 // MASTER TOGGLE — Set to false to disable all visual experiments
-export const ENABLE_VISUALS = false;
+export const ENABLE_VISUALS = true;
 
 // Individual toggles for fine-grained control
 export const visualConfig = {
