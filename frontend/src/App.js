@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+// OPTIONAL VISUAL — SAFE TO REMOVE (import below)
+import "../src/styles/visuals.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -10,6 +12,9 @@ import BlogPage from "./components/BlogPage";
 import BlogPostPage from "./components/BlogPostPage";
 import AwardsPage from "./components/AwardsPage";
 import AboutPage from "./components/AboutPage";
+// OPTIONAL VISUAL — SAFE TO REMOVE (import below)
+import { VisualExperiments } from "./components/VisualExperiments";
+import { ENABLE_VISUALS } from "./config/visualConfig";
 
 // Home Page Component
 const HomePage = () => {
