@@ -66,6 +66,7 @@ const BlogPage = () => {
                 </div>
               </div>
             </article>
+            </TiltCard>
           ))}
         </div>
 
