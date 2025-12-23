@@ -122,6 +122,7 @@ const FeaturedProjects = () => {
                 </div>
               </div>
             </article>
+            </TiltCard>
           ))}
         </div>
       </div>
