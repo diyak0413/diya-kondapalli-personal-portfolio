@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { heroContent } from '../data/mock';
+// OPTIONAL VISUAL — SAFE TO REMOVE (import below)
+import { VisualExperiments } from './VisualExperiments';
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -16,6 +18,9 @@ const Hero = () => {
     <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-50 via-white to-white" />
+      
+      {/* OPTIONAL VISUAL — SAFE TO REMOVE */}
+      <VisualExperiments section="hero" />
       
       {/* Decorative elements */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-to-br from-neutral-100/50 to-transparent rounded-full blur-3xl" />
