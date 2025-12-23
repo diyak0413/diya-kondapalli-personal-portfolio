@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { Button } from './ui/button';
 import { projectsContent } from '../data/mock';
+// OPTIONAL VISUAL — SAFE TO REMOVE (import below)
+import { TiltCard } from './VisualExperiments';
 
 const FeaturedProjects = () => {
   const featuredProjects = projectsContent.projects.filter((p) => p.featured);
@@ -35,11 +37,12 @@ const FeaturedProjects = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {featuredProjects.map((project, index) => (
-            <article
-              key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-neutral-200 hover:shadow-lg transition-all duration-500"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
+            // OPTIONAL VISUAL — TiltCard adds 3D hover effect (safe to replace with <article>)
+            <TiltCard key={project.id} className="h-full">
+              <article
+                className="project-card relative group bg-white rounded-2xl overflow-hidden border border-neutral-100 hover:border-neutral-200 transition-all duration-500 h-full"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
               {/* Project Image Placeholder */}
               <div className="aspect-[16/10] bg-gradient-to-br from-neutral-100 to-neutral-50 flex items-center justify-center">
                 <div className="text-center p-8">
