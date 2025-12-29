@@ -54,52 +54,17 @@ const AboutPage = () => {
           </div>
 
           {/* Right - Photo Collage */}
-          <div className="relative">
+          <div className="relative flex items-center justify-center">
             {enablePersonalVisuals ? (
-              <TiltOnScroll intensity={3}>
-                <div className="relative h-[500px] lg:h-[600px]">
-                  {/* Stacked polaroid photos */}
-                  <div 
-                    className="absolute top-0 left-0 w-48 lg:w-56 z-10"
-                    style={{ transform: 'rotate(-8deg)' }}
-                  >
-                    <Polaroid
-                      src={personalPhotos.about[0]?.src}
-                      placeholder={personalPhotos.about[0]?.placeholder}
-                      caption="[CAPTION: A moment that matters]"
-                      rotation={0}
-                    />
-                  </div>
-                  
-                  <div 
-                    className="absolute top-20 left-32 lg:left-40 w-48 lg:w-56 z-20"
-                    style={{ transform: 'rotate(3deg)' }}
-                  >
-                    <Polaroid
-                      src={personalPhotos.about[1]?.src}
-                      placeholder={personalPhotos.about[1]?.placeholder}
-                      caption="[CAPTION: Building something]"
-                      rotation={0}
-                    />
-                  </div>
-                  
-                  <div 
-                    className="absolute top-48 left-8 lg:left-16 w-48 lg:w-56 z-30"
-                    style={{ transform: 'rotate(-4deg)' }}
-                  >
-                    <Polaroid
-                      src={personalPhotos.about[2]?.src}
-                      placeholder={personalPhotos.about[2]?.placeholder}
-                      caption="[CAPTION: With my people]"
-                      rotation={0}
-                    />
-                  </div>
-
-                  {/* Decorative tape pieces */}
-                  <div className="absolute top-40 right-10 w-16 h-6 bg-amber-100/60 rotate-45 rounded-sm" />
-                  <div className="absolute bottom-32 right-20 w-12 h-5 bg-amber-100/40 -rotate-12 rounded-sm" />
-                </div>
-              </TiltOnScroll>
+              <AnimatedPhotoStack 
+                photos={personalPhotos.about.map((photo, index) => ({
+                  ...photo,
+                  caption: index === 0 ? '[CAPTION: A moment that matters]' : 
+                           index === 1 ? '[CAPTION: Building something]' : 
+                           '[CAPTION: With my people]'
+                }))}
+                className="mx-auto"
+              />
             ) : (
               /* Fallback when personal visuals are disabled */
               <div className="aspect-[4/5] bg-gradient-to-br from-neutral-100 to-neutral-50 rounded-2xl flex items-center justify-center border border-neutral-100">
