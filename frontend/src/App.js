@@ -12,8 +12,8 @@ import BlogPage from "./components/BlogPage";
 import BlogPostPage from "./components/BlogPostPage";
 import AwardsPage from "./components/AwardsPage";
 import AboutPage from "./components/AboutPage";
-// OPTIONAL VISUAL — Intro Collage Animation
-import IntroCollage from "./components/IntroCollage";
+// INTRO OVERLAY — SAFE TO REMOVE
+import IntroOverlay from "./components/IntroOverlay";
 import { MiniCollage, ImageStrip } from "./components/ImageGallery";
 
 // Home Page Component
