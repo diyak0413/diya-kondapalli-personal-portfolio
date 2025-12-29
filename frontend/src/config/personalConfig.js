@@ -12,12 +12,13 @@
 
 export const enablePersonalVisuals = true;
 
-// INTRO COLLAGE TOGGLE — Set to false to skip intro animation
-export const enableIntroCollage = true;
+// INTRO OVERLAY TOGGLE — Set to false to skip intro animation
+// This controls the full-screen welcome sequence on first load
+export const enableIntroOverlay = true;
 
 export const personalConfig = {
-  // Intro collage animation on first load
-  introCollage: true,
+  // Intro overlay animation on first load
+  introOverlay: true,
   
   // Polaroid-style floating photos
   polaroidPhotos: true,
