@@ -1,0 +1,220 @@
+/* ============================================
+   INTRO OVERLAY STYLES — SAFE TO REMOVE
+   ============================================
+   TO DISABLE: Remove import from IntroOverlay.jsx
+   Or set enableIntroOverlay = false
+   ============================================ */
+
+/* Main overlay container */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.intro-overlay.exiting {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+/* Background */
+.intro-overlay-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    145deg,
+    #faf8f5 0%,
+    #f8f6f2 40%,
+    #fff 100%
+  );
+  z-index: -2;
+}
+
+/* Photo collage container */
+.intro-photo-collage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Individual photo */
+.intro-photo {
+  position: absolute;
+  width: 280px;
+  height: 200px;
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.intro-photo.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.intro-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e8e4de 0%, #d9d4cb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.intro-photo-placeholder span {
+  font-size: 12px;
+  color: #8a8279;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Dim overlay for text visibility */
+.intro-dim-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 248, 245, 0.85);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+}
+
+.intro-dim-overlay.visible {
+  opacity: 1;
+}
+
+/* Centered text content */
+.intro-text-content {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  pointer-events: none;
+}
+
+.intro-text-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.intro-main-line {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.intro-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #5a5a5a;
+  margin: 0 0 40px 0;
+  letter-spacing: 0.01em;
+}
+
+.intro-enter-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  background: transparent;
+  border: 1px solid #1a1a1a;
+  padding: 14px 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.intro-enter-btn:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* Skip intro link */
+.intro-skip-link {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 30;
+}
+
+.intro-skip-link.visible {
+  opacity: 1;
+}
+
+.intro-skip-link:hover {
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-photo {
+    width: 180px;
+    height: 130px;
+  }
+  
+  .intro-main-line {
+    font-size: 2.5rem;
+  }
+  
+  .intro-subtext {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+  
+  .intro-enter-btn {
+    padding: 12px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-photo {
+    width: 140px;
+    height: 100px;
+  }
+  
+  .intro-main-line {
+    font-size: 2rem;
+  }
+  
+  .intro-subtext {
+    font-size: 0.9rem;
+  }
+}
