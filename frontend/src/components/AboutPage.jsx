@@ -4,6 +4,7 @@ import { ArrowRight, Code2, Lightbulb, Rocket, Heart } from 'lucide-react';
 import { Button } from './ui/button';
 import { aboutContent } from '../data/mock';
 import { Polaroid, PinnedNote, TiltOnScroll } from './PersonalVisuals';
+import { AnimatedPhotoStack } from './ImageGallery';
 import { personalPhotos } from '../data/personalContent';
 import { enablePersonalVisuals } from '../config/personalConfig';
 
