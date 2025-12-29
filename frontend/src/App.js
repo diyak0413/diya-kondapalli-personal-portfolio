@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "./styles/personal.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,6 +12,9 @@ import BlogPage from "./components/BlogPage";
 import BlogPostPage from "./components/BlogPostPage";
 import AwardsPage from "./components/AwardsPage";
 import AboutPage from "./components/AboutPage";
+// OPTIONAL VISUAL — Intro Collage Animation
+import IntroCollage from "./components/IntroCollage";
+import { MiniCollage, ImageStrip } from "./components/ImageGallery";
 
 // Home Page Component
 const HomePage = () => {
