@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
+import "./styles/personal.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import FeaturedProjects from "./components/FeaturedProjects";
+import OutsideTheCode from "./components/OutsideTheCode";
 import Footer from "./components/Footer";
 import ProjectsPage from "./components/ProjectsPage";
 import BlogPage from "./components/BlogPage";
