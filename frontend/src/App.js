@@ -47,20 +47,23 @@ function App() {
 
   return (
     <div className="App">
-      {/* OPTIONAL VISUAL — Intro Collage Animation */}
-      <IntroCollage onComplete={() => setIntroComplete(true)} />
-      
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="/awards" element={<AwardsPage />} />
-            <Route path="/about" element={<AboutPage />} />
-          </Routes>
-        </Layout>
+        {/* OPTIONAL VISUAL — Intro Collage Animation (only on homepage) */}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <IntroCollage onComplete={() => setIntroComplete(true)} />
+              <Layout>
+                <HomePage />
+              </Layout>
+            </>
+          } />
+          <Route path="/projects" element={<Layout><ProjectsPage /></Layout>} />
+          <Route path="/blog" element={<Layout><BlogPage /></Layout>} />
+          <Route path="/blog/:slug" element={<Layout><BlogPostPage /></Layout>} />
+          <Route path="/awards" element={<Layout><AwardsPage /></Layout>} />
+          <Route path="/about" element={<Layout><AboutPage /></Layout>} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
