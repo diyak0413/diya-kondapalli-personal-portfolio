@@ -48,11 +48,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* OPTIONAL VISUAL — Intro Collage Animation (only on homepage) */}
         <Routes>
           <Route path="/" element={
             <>
-              <IntroCollage onComplete={() => setIntroComplete(true)} />
+              {/* INTRO OVERLAY — SAFE TO REMOVE */}
+              <IntroOverlay onComplete={() => setIntroComplete(true)} />
               <Layout>
                 <HomePage />
               </Layout>
