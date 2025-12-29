@@ -12,7 +12,13 @@
 
 export const enablePersonalVisuals = true;
 
+// INTRO COLLAGE TOGGLE — Set to false to skip intro animation
+export const enableIntroCollage = true;
+
 export const personalConfig = {
+  // Intro collage animation on first load
+  introCollage: true,
+  
   // Polaroid-style floating photos
   polaroidPhotos: true,
   
@@ -27,6 +33,12 @@ export const personalConfig = {
   
   // Warm accent color theme
   warmAccents: true,
+  
+  // Mini photo collage on homepage
+  miniCollage: true,
+  
+  // Scrolling image strip
+  imageStrip: true,
 };
 
 // Helper to check if a feature is enabled
