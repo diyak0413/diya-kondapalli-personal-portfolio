@@ -7,7 +7,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { enablePersonalVisuals, isPersonalEnabled } from '../config/personalConfig';
-import { miniCollagePhotos, imageStripPhotos } from '../data/introContent';
+import { miniCollagePhotos, imageStripPhotos } from '../data/introOverlayContent';
 
 // Mini Collage Component
 export const MiniCollage = ({ className = '' }) => {
