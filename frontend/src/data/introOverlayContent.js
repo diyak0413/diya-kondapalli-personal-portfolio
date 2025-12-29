@@ -1,1 +1,95 @@
-// ============================================\n// INTRO OVERLAY PHOTO PLACEHOLDERS\n// ============================================\n// Replace these with actual photos.\n// Add or remove photos by editing this array.\n// Store images in /assets/intro/ folder.\n// ============================================\n\n// INTRO PHOTOS — Edit this array to add/remove photos\n// Each photo will appear one after another in the intro sequence\nexport const introOverlayPhotos = [\n  {\n    id: 'intro-1',\n    src: null, // [REPLACE WITH PHOTO 1 — rowing]\n    placeholder: '[REPLACE WITH PHOTO 1 — rowing]',\n    alt: 'Rowing',\n  },\n  {\n    id: 'intro-2',\n    src: null, // [REPLACE WITH PHOTO 2 — powerlifting]\n    placeholder: '[REPLACE WITH PHOTO 2 — powerlifting]',\n    alt: 'Powerlifting',\n  },\n  {\n    id: 'intro-3',\n    src: null, // [REPLACE WITH PHOTO 3 — coding / project]\n    placeholder: '[REPLACE WITH PHOTO 3 — coding / project]',\n    alt: 'Coding project',\n  },\n  {\n    id: 'intro-4',\n    src: null, // [REPLACE WITH PHOTO 4 — candid / life]\n    placeholder: '[REPLACE WITH PHOTO 4 — candid / life]',\n    alt: 'Candid moment',\n  },\n  {\n    id: 'intro-5',\n    src: null, // [REPLACE WITH PHOTO 5 — team / friends]\n    placeholder: '[REPLACE WITH PHOTO 5 — team / friends]',\n    alt: 'With team',\n  },\n  {\n    id: 'intro-6',\n    src: null, // [REPLACE WITH PHOTO 6 — achievement]\n    placeholder: '[REPLACE WITH PHOTO 6 — achievement]',\n    alt: 'Achievement',\n  },\n];\n\n// INTRO TEXT — Edit these to personalize\nexport const introOverlayText = {\n  // Main greeting line\n  mainLine: \"Hi, I'm Diya.\",\n  \n  // Subtext line\n  subtext: \"I build, I learn, I lift, I row. Welcome.\",\n  \n  // Button text\n  buttonText: \"Enter site\",\n};\n\n// Mini collage photos for homepage\nexport const miniCollagePhotos = [\n  {\n    id: 'mini-1',\n    src: null,\n    placeholder: '[PHOTO — favorite project moment]',\n    alt: 'Project moment',\n    rotation: -5,\n  },\n  {\n    id: 'mini-2',\n    src: null,\n    placeholder: '[PHOTO — behind the scenes]',\n    alt: 'Behind the scenes',\n    rotation: 3,\n  },\n  {\n    id: 'mini-3',\n    src: null,\n    placeholder: '[PHOTO — in progress work]',\n    alt: 'Work in progress',\n    rotation: -2,\n  },\n];\n\n// Scrolling image strip photos\nexport const imageStripPhotos = [\n  { id: 'strip-1', src: null, placeholder: '[PHOTO — project 1]', alt: 'Project 1' },\n  { id: 'strip-2', src: null, placeholder: '[PHOTO — memory 1]', alt: 'Memory 1' },\n  { id: 'strip-3', src: null, placeholder: '[PHOTO — rowing moment]', alt: 'Rowing' },\n  { id: 'strip-4', src: null, placeholder: '[PHOTO — project 2]', alt: 'Project 2' },\n  { id: 'strip-5', src: null, placeholder: '[PHOTO — lifting PR]', alt: 'Lifting' },\n  { id: 'strip-6', src: null, placeholder: '[PHOTO — team photo]', alt: 'Team' },\n];
+// ============================================
+// INTRO OVERLAY PHOTO PLACEHOLDERS
+// ============================================
+// Replace these with actual photos.
+// Add or remove photos by editing this array.
+// Store images in /assets/intro/ folder.
+// ============================================
+
+// INTRO PHOTOS — Edit this array to add/remove photos
+// Each photo will appear one after another in the intro sequence
+export const introOverlayPhotos = [
+  {
+    id: 'intro-1',
+    src: null, // [REPLACE WITH PHOTO 1 — rowing]
+    placeholder: '[REPLACE WITH PHOTO 1 — rowing]',
+    alt: 'Rowing',
+  },
+  {
+    id: 'intro-2',
+    src: null, // [REPLACE WITH PHOTO 2 — powerlifting]
+    placeholder: '[REPLACE WITH PHOTO 2 — powerlifting]',
+    alt: 'Powerlifting',
+  },
+  {
+    id: 'intro-3',
+    src: null, // [REPLACE WITH PHOTO 3 — coding / project]
+    placeholder: '[REPLACE WITH PHOTO 3 — coding / project]',
+    alt: 'Coding project',
+  },
+  {
+    id: 'intro-4',
+    src: null, // [REPLACE WITH PHOTO 4 — candid / life]
+    placeholder: '[REPLACE WITH PHOTO 4 — candid / life]',
+    alt: 'Candid moment',
+  },
+  {
+    id: 'intro-5',
+    src: null, // [REPLACE WITH PHOTO 5 — team / friends]
+    placeholder: '[REPLACE WITH PHOTO 5 — team / friends]',
+    alt: 'With team',
+  },
+  {
+    id: 'intro-6',
+    src: null, // [REPLACE WITH PHOTO 6 — achievement]
+    placeholder: '[REPLACE WITH PHOTO 6 — achievement]',
+    alt: 'Achievement',
+  },
+];
+
+// INTRO TEXT — Edit these to personalize
+export const introOverlayText = {
+  // Main greeting line
+  mainLine: "Hi, I'm Diya.",
+  
+  // Subtext line
+  subtext: "I build, I learn, I lift, I row. Welcome.",
+  
+  // Button text
+  buttonText: "Enter site",
+};
+
+// Mini collage photos for homepage
+export const miniCollagePhotos = [
+  {
+    id: 'mini-1',
+    src: null,
+    placeholder: '[PHOTO — favorite project moment]',
+    alt: 'Project moment',
+    rotation: -5,
+  },
+  {
+    id: 'mini-2',
+    src: null,
+    placeholder: '[PHOTO — behind the scenes]',
+    alt: 'Behind the scenes',
+    rotation: 3,
+  },
+  {
+    id: 'mini-3',
+    src: null,
+    placeholder: '[PHOTO — in progress work]',
+    alt: 'Work in progress',
+    rotation: -2,
+  },
+];
+
+// Scrolling image strip photos
+export const imageStripPhotos = [
+  { id: 'strip-1', src: null, placeholder: '[PHOTO — project 1]', alt: 'Project 1' },
+  { id: 'strip-2', src: null, placeholder: '[PHOTO — memory 1]', alt: 'Memory 1' },
+  { id: 'strip-3', src: null, placeholder: '[PHOTO — rowing moment]', alt: 'Rowing' },
+  { id: 'strip-4', src: null, placeholder: '[PHOTO — project 2]', alt: 'Project 2' },
+  { id: 'strip-5', src: null, placeholder: '[PHOTO — lifting PR]', alt: 'Lifting' },
+  { id: 'strip-6', src: null, placeholder: '[PHOTO — team photo]', alt: 'Team' },
+];
