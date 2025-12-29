@@ -1,0 +1,238 @@
+/* ============================================
+   PERSONAL & WARM VISUAL STYLES
+   ============================================
+   TO DISABLE: Remove this import from index.css
+   Or set enablePersonalVisuals = false
+   ============================================ */
+
+/* Warm accent color palette */
+:root {
+  --warm-cream: #faf8f5;
+  --warm-beige: #f5f0e8;
+  --warm-tan: #e8dfd3;
+  --warm-brown: #8b7355;
+  --warm-amber: #d4a574;
+  --warm-rust: #c17f59;
+  --tape-color: rgba(255, 248, 220, 0.85);
+  --shadow-warm: rgba(139, 115, 85, 0.15);
+}
+
+/* ============================================
+   POLAROID PHOTO STYLES
+   ============================================ */
+.polaroid {
+  background: white;
+  padding: 12px 12px 40px 12px;
+  box-shadow: 
+    0 4px 6px -1px var(--shadow-warm),
+    0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+.polaroid::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 60px;
+  height: 20px;
+  background: var(--tape-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.polaroid-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--warm-beige) 0%, var(--warm-tan) 100%);
+}
+
+.polaroid-caption {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 14px;
+  color: var(--warm-brown);
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.3;
+}
+
+/* Hover effect for polaroids */
+.polaroid:hover {
+  transform: translateY(-8px) rotate(0deg) !important;
+  box-shadow: 
+    0 20px 40px -10px var(--shadow-warm),
+    0 15px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   PHOTO STACK / COLLAGE STYLES
+   ============================================ */
+.photo-stack {
+  position: relative;
+  perspective: 1000px;
+}
+
+.photo-stack .polaroid {
+  position: absolute;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.photo-stack:hover .polaroid:nth-child(1) {
+  transform: translateX(-20px) rotate(-8deg);
+}
+
+.photo-stack:hover .polaroid:nth-child(2) {
+  transform: translateX(0) rotate(0deg);
+}
+
+.photo-stack:hover .polaroid:nth-child(3) {
+  transform: translateX(20px) rotate(8deg);
+}
+
+/* ============================================
+   PINNED NOTE STYLES
+   ============================================ */
+.pinned-note {
+  background: #fffef5;
+  padding: 20px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.02);
+  position: relative;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.pinned-note::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #d4a574 0%, #c17f59 100%);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pinned-note:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.pinned-note-text {
+  font-family: 'Caveat', cursive, sans-serif;
+  font-size: 18px;
+  color: #5a5a5a;
+  line-height: 1.6;
+}
+
+/* ============================================
+   PARALLAX & MOTION STYLES
+   ============================================ */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-element {
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+.tilt-on-scroll {
+  transition: transform 0.3s ease-out;
+  transform-style: preserve-3d;
+}
+
+/* ============================================
+   WARM SECTION BACKGROUNDS
+   ============================================ */
+.warm-section {
+  background: linear-gradient(180deg, var(--warm-cream) 0%, white 100%);
+  position: relative;
+}
+
+.warm-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+}
+
+/* ============================================
+   INTERESTS CARD STYLES
+   ============================================ */
+.interest-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(139, 115, 85, 0.15);
+}
+
+.interest-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--warm-beige) 0%, var(--warm-tan) 100%);
+}
+
+/* ============================================
+   HANDWRITTEN / PERSONAL FONT
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&display=swap');
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+}
+
+/* ============================================
+   FLOATING PHOTOS CONTAINER
+   ============================================ */
+.floating-photos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-photos .polaroid {
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.floating-photos .polaroid:active {
+  cursor: grabbing;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .polaroid {
+    padding: 8px 8px 30px 8px;
+  }
+  
+  .polaroid::before {
+    width: 40px;
+    height: 15px;
+  }
+  
+  .floating-photos {
+    display: none;
+  }
+  
+  .photo-stack .polaroid {
+    position: relative;
+  }
+}
