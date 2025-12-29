@@ -21,7 +21,11 @@ const HomePage = () => {
   return (
     <>
       <Hero />
+      {/* OPTIONAL VISUAL — Mini photo collage */}
+      <MiniCollage className="bg-white" />
       <FeaturedProjects />
+      {/* OPTIONAL VISUAL — Scrolling image strip */}
+      <ImageStrip />
       <OutsideTheCode />
     </>
   );
