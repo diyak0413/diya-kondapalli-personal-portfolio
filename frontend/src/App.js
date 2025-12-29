@@ -43,8 +43,13 @@ const Layout = ({ children }) => {
 };
 
 function App() {
+  const [introComplete, setIntroComplete] = useState(false);
+
   return (
     <div className="App">
+      {/* OPTIONAL VISUAL — Intro Collage Animation */}
+      <IntroCollage onComplete={() => setIntroComplete(true)} />
+      
       <BrowserRouter>
         <Layout>
           <Routes>
