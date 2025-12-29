@@ -1,220 +1,244 @@
 /* ============================================
-   INTRO OVERLAY STYLES — SAFE TO REMOVE
+   INTRO OVERLAY STYLES
    ============================================
-   TO DISABLE: Remove import from IntroOverlay.jsx
-   Or set enableIntroOverlay = false
+   Full-screen photo stacking sequence
+   Clean, minimal, elegant - no Polaroid frames
    ============================================ */
 
-/* Main overlay container */
-.intro-overlay {
+/* Main container - full viewport overlay */
+.intro-overlay-container {
   position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
   overflow: hidden;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease-out;
 }
 
-.intro-overlay.exiting {
+.intro-overlay-container.is-exiting {
   opacity: 0;
-  transform: scale(1.02);
   pointer-events: none;
 }
 
-/* Background */
-.intro-overlay-bg {
+/* Solid background - completely covers homepage */
+.intro-solid-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    145deg,
-    #faf8f5 0%,
-    #f8f6f2 40%,
-    #fff 100%
-  );
-  z-index: -2;
+  background: #f5f3f0;
+  z-index: 1;
 }
 
-/* Photo collage container */
-.intro-photo-collage {
+/* Photo stack container */
+.intro-photo-stack {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
-/* Individual photo */
-.intro-photo {
+/* Individual stacking photo */
+.intro-stack-photo {
   position: absolute;
-  width: 280px;
-  height: 200px;
+  width: 85vw;
+  height: 80vh;
+  max-width: 1200px;
   opacity: 0;
-  transform: translateY(40px) scale(0.9);
-  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 
-    0 8px 30px rgba(0, 0, 0, 0.12),
-    0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: 
+    translate(var(--photo-x), var(--photo-y)) 
+    rotate(var(--photo-rotate))
+    scale(0.95);
+  z-index: var(--photo-z);
+  transition: 
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
   overflow: hidden;
   border-radius: 4px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.15),
+    0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.intro-photo.visible {
+.intro-stack-photo.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: 
+    translate(var(--photo-x), var(--photo-y)) 
+    rotate(var(--photo-rotate))
+    scale(1);
 }
 
-.intro-photo img {
+.intro-stack-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.intro-photo-placeholder {
+/* Placeholder for photos not yet added */
+.intro-photo-placeholder-box {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #e8e4de 0%, #d9d4cb 100%);
+  background: linear-gradient(
+    145deg,
+    #e5e2dd 0%,
+    #d8d4ce 50%,
+    #cec9c2 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 40px;
 }
 
-.intro-photo-placeholder span {
-  font-size: 12px;
-  color: #8a8279;
+.intro-photo-placeholder-box span {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #8a857d;
   text-align: center;
-  line-height: 1.4;
+  letter-spacing: 0.02em;
 }
 
-/* Dim overlay for text visibility */
-.intro-dim-overlay {
+/* Dark overlay for text readability */
+.intro-dark-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(250, 248, 245, 0.85);
+  background: rgba(0, 0, 0, 0.55);
   opacity: 0;
-  transition: opacity 0.8s ease;
   z-index: 10;
+  transition: opacity 0.8s ease-out;
 }
 
-.intro-dim-overlay.visible {
+.intro-dark-overlay.is-visible {
   opacity: 1;
 }
 
-/* Centered text content */
-.intro-text-content {
-  position: relative;
+/* Centered text block */
+.intro-text-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 20;
   text-align: center;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease;
+  transition: opacity 0.8s ease-out;
   pointer-events: none;
 }
 
-.intro-text-content.visible {
+.intro-text-block.is-visible {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
 }
 
-.intro-main-line {
-  font-family: 'Inter', sans-serif;
-  font-size: 3.5rem;
+/* Heading */
+.intro-heading {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 4.5rem;
   font-weight: 300;
-  color: #1a1a1a;
-  margin: 0 0 16px 0;
-  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
-.intro-subtext {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.25rem;
+/* Subheading */
+.intro-subheading {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 1.35rem;
   font-weight: 300;
-  color: #5a5a5a;
-  margin: 0 0 40px 0;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 50px 0;
   letter-spacing: 0.01em;
+  line-height: 1.5;
+  max-width: 600px;
 }
 
-.intro-enter-btn {
-  font-family: 'Inter', sans-serif;
+/* Enter button */
+.intro-enter-button {
+  font-family: 'Inter', -apple-system, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: #ffffff;
   background: transparent;
-  border: 1px solid #1a1a1a;
-  padding: 14px 36px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 16px 48px;
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 2px;
 }
 
-.intro-enter-btn:hover {
-  background: #1a1a1a;
-  color: #fff;
+.intro-enter-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
-/* Skip intro link */
-.intro-skip-link {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  color: #999;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px 16px;
-  opacity: 0;
-  transition: all 0.4s ease;
-  z-index: 30;
+.intro-enter-button:active {
+  transform: scale(0.98);
 }
 
-.intro-skip-link.visible {
-  opacity: 1;
-}
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
 
-.intro-skip-link:hover {
-  color: #555;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .intro-photo {
-    width: 180px;
-    height: 130px;
+@media (max-width: 1024px) {
+  .intro-stack-photo {
+    width: 90vw;
+    height: 70vh;
   }
   
-  .intro-main-line {
+  .intro-heading {
+    font-size: 3.5rem;
+  }
+  
+  .intro-subheading {
+    font-size: 1.15rem;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-stack-photo {
+    width: 95vw;
+    height: 60vh;
+  }
+  
+  .intro-heading {
     font-size: 2.5rem;
   }
   
-  .intro-subtext {
+  .intro-subheading {
     font-size: 1rem;
-    padding: 0 20px;
+    padding: 0 30px;
+    margin-bottom: 40px;
   }
   
-  .intro-enter-btn {
-    padding: 12px 28px;
+  .intro-enter-button {
+    padding: 14px 36px;
+  }
+  
+  .intro-photo-placeholder-box span {
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .intro-photo {
-    width: 140px;
-    height: 100px;
+  .intro-stack-photo {
+    width: 100vw;
+    height: 55vh;
+    border-radius: 0;
   }
   
-  .intro-main-line {
+  .intro-heading {
     font-size: 2rem;
   }
   
-  .intro-subtext {
+  .intro-subheading {
     font-size: 0.9rem;
   }
 }
