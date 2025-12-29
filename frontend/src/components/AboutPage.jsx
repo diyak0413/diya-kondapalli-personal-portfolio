@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code2, Lightbulb, Rocket } from 'lucide-react';
+import { ArrowRight, Code2, Lightbulb, Rocket, Heart } from 'lucide-react';
 import { Button } from './ui/button';
 import { aboutContent } from '../data/mock';
+import { Polaroid, PinnedNote, TiltOnScroll } from './PersonalVisuals';
+import { personalPhotos } from '../data/personalContent';
+import { enablePersonalVisuals } from '../config/personalConfig';
 
 const AboutPage = () => {
   return (
@@ -25,6 +28,16 @@ const AboutPage = () => {
               ))}
             </div>
 
+            {/* Personal pinned note */}
+            {enablePersonalVisuals && (
+              <div className="mt-8 max-w-sm">
+                <PinnedNote>
+                  [PERSONAL NOTE: Write something authentic here - a belief, a quirk, 
+                  something that makes you uniquely you. This adds warmth.]
+                </PinnedNote>
+              </div>
+            )}
+
             <div className="mt-10">
               <Button
                 size="lg"
@@ -39,29 +52,75 @@ const AboutPage = () => {
             </div>
           </div>
 
-          {/* Right - Profile Image Placeholder */}
+          {/* Right - Photo Collage */}
           <div className="relative">
-            <div className="aspect-[4/5] bg-gradient-to-br from-neutral-100 to-neutral-50 rounded-2xl flex items-center justify-center border border-neutral-100">
-              <div className="text-center p-8">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-neutral-200/50 flex items-center justify-center">
-                  <span className="text-4xl text-neutral-300 font-light">D</span>
+            {enablePersonalVisuals ? (
+              <TiltOnScroll intensity={3}>
+                <div className="relative h-[500px] lg:h-[600px]">
+                  {/* Stacked polaroid photos */}
+                  <div 
+                    className="absolute top-0 left-0 w-48 lg:w-56 z-10"
+                    style={{ transform: 'rotate(-8deg)' }}
+                  >
+                    <Polaroid
+                      src={personalPhotos.about[0]?.src}
+                      placeholder={personalPhotos.about[0]?.placeholder}
+                      caption="[CAPTION: A moment that matters]"
+                      rotation={0}
+                    />
+                  </div>
+                  
+                  <div 
+                    className="absolute top-20 left-32 lg:left-40 w-48 lg:w-56 z-20"
+                    style={{ transform: 'rotate(3deg)' }}
+                  >
+                    <Polaroid
+                      src={personalPhotos.about[1]?.src}
+                      placeholder={personalPhotos.about[1]?.placeholder}
+                      caption="[CAPTION: Building something]"
+                      rotation={0}
+                    />
+                  </div>
+                  
+                  <div 
+                    className="absolute top-48 left-8 lg:left-16 w-48 lg:w-56 z-30"
+                    style={{ transform: 'rotate(-4deg)' }}
+                  >
+                    <Polaroid
+                      src={personalPhotos.about[2]?.src}
+                      placeholder={personalPhotos.about[2]?.placeholder}
+                      caption="[CAPTION: With my people]"
+                      rotation={0}
+                    />
+                  </div>
+
+                  {/* Decorative tape pieces */}
+                  <div className="absolute top-40 right-10 w-16 h-6 bg-amber-100/60 rotate-45 rounded-sm" />
+                  <div className="absolute bottom-32 right-20 w-12 h-5 bg-amber-100/40 -rotate-12 rounded-sm" />
                 </div>
-                <p className="text-sm text-neutral-400">
-                  [REPLACE: Add your profile photo]
-                </p>
+              </TiltOnScroll>
+            ) : (
+              /* Fallback when personal visuals are disabled */
+              <div className="aspect-[4/5] bg-gradient-to-br from-neutral-100 to-neutral-50 rounded-2xl flex items-center justify-center border border-neutral-100">
+                <div className="text-center p-8">
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-neutral-200/50 flex items-center justify-center">
+                    <span className="text-4xl text-neutral-300 font-light">D</span>
+                  </div>
+                  <p className="text-sm text-neutral-400">
+                    [REPLACE: Add your profile photo]
+                  </p>
+                </div>
               </div>
-            </div>
-            {/* Decorative element */}
-            <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full bg-neutral-100 rounded-2xl" />
+            )}
           </div>
         </div>
 
         {/* Stats Section */}
-        <div className="grid sm:grid-cols-3 gap-6 mb-20">
+        <div className={`grid sm:grid-cols-3 gap-6 mb-20 ${enablePersonalVisuals ? 'warm-section rounded-2xl p-8' : ''}`}>
           {aboutContent.stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl border border-neutral-100 p-6 lg:p-8 text-center hover:border-neutral-200 hover:shadow-lg transition-all duration-500"
+              className="bg-white rounded-2xl border border-neutral-100 p-6 lg:p-8 text-center hover:border-amber-200 hover:shadow-lg transition-all duration-500"
             >
               <p className="text-3xl lg:text-4xl font-light text-neutral-900 mb-2">
                 {stat.value}
@@ -82,7 +141,11 @@ const AboutPage = () => {
             {aboutContent.skills.map((skill, index) => (
               <span
                 key={index}
-                className="px-5 py-2.5 bg-neutral-100 text-neutral-700 rounded-full text-sm hover:bg-neutral-200 transition-colors cursor-default"
+                className={`px-5 py-2.5 rounded-full text-sm transition-colors cursor-default ${
+                  enablePersonalVisuals 
+                    ? 'bg-amber-50 text-amber-800 hover:bg-amber-100' 
+                    : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                }`}
               >
                 {skill}
               </span>
@@ -95,10 +158,10 @@ const AboutPage = () => {
           <h2 className="text-2xl font-light text-neutral-900 mb-8">
             What Drives Me
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-neutral-50 rounded-2xl p-6 lg:p-8">
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 shadow-sm">
-                <Lightbulb className="h-6 w-6 text-neutral-600" />
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className={`rounded-2xl p-6 lg:p-8 ${enablePersonalVisuals ? 'bg-amber-50/50' : 'bg-neutral-50'}`}>
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-sm ${enablePersonalVisuals ? 'bg-white' : 'bg-white'}`}>
+                <Lightbulb className={`h-6 w-6 ${enablePersonalVisuals ? 'text-amber-600' : 'text-neutral-600'}`} />
               </div>
               <h3 className="text-lg font-medium text-neutral-900 mb-2">
                 Curiosity
@@ -107,9 +170,9 @@ const AboutPage = () => {
                 [REPLACE: Write about your curiosity and what excites you about learning new things.]
               </p>
             </div>
-            <div className="bg-neutral-50 rounded-2xl p-6 lg:p-8">
+            <div className={`rounded-2xl p-6 lg:p-8 ${enablePersonalVisuals ? 'bg-amber-50/50' : 'bg-neutral-50'}`}>
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 shadow-sm">
-                <Code2 className="h-6 w-6 text-neutral-600" />
+                <Code2 className={`h-6 w-6 ${enablePersonalVisuals ? 'text-amber-600' : 'text-neutral-600'}`} />
               </div>
               <h3 className="text-lg font-medium text-neutral-900 mb-2">
                 Building
@@ -118,15 +181,26 @@ const AboutPage = () => {
                 [REPLACE: Write about your approach to building things and creating solutions.]
               </p>
             </div>
-            <div className="bg-neutral-50 rounded-2xl p-6 lg:p-8">
+            <div className={`rounded-2xl p-6 lg:p-8 ${enablePersonalVisuals ? 'bg-amber-50/50' : 'bg-neutral-50'}`}>
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 shadow-sm">
-                <Rocket className="h-6 w-6 text-neutral-600" />
+                <Rocket className={`h-6 w-6 ${enablePersonalVisuals ? 'text-amber-600' : 'text-neutral-600'}`} />
               </div>
               <h3 className="text-lg font-medium text-neutral-900 mb-2">
                 Impact
               </h3>
               <p className="text-sm text-neutral-500 leading-relaxed">
                 [REPLACE: Write about your desire to create meaningful impact through technology.]
+              </p>
+            </div>
+            <div className={`rounded-2xl p-6 lg:p-8 ${enablePersonalVisuals ? 'bg-amber-50/50' : 'bg-neutral-50'}`}>
+              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 shadow-sm">
+                <Heart className={`h-6 w-6 ${enablePersonalVisuals ? 'text-amber-600' : 'text-neutral-600'}`} />
+              </div>
+              <h3 className="text-lg font-medium text-neutral-900 mb-2">
+                Balance
+              </h3>
+              <p className="text-sm text-neutral-500 leading-relaxed">
+                [REPLACE: Write about how you balance tech with other parts of life - rowing, lifting, etc.]
               </p>
             </div>
           </div>
